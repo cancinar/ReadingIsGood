@@ -1,0 +1,378 @@
+{
+	"info": {
+		"_postman_id": "a2421833-d0cd-4d33-9906-33627d8fe29c",
+		"name": "ReadingIsGood",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"unclebob@hotmail.com\",\n    \"password\" : \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Get Orders By Date",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYW5jaW5hckBvdXRsb29rLmNvbSIsImV4cCI6MTYyOTgyMTcwNCwiaWF0IjoxNjI5ODAzNzA0fQ.NFDNyY3m0IeuaQRqbpPN8cfQRJB12O6fK8BOPnPrcHnLl_WaL9bJ6WeTXOx3SWq__zAJ7ZUXbm0wXRaP9W6Qfw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/orders/between?startDate=2021-01-01&endDate=2021-10-10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders",
+								"between"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2021-01-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2021-10-10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyaWd1c2VyIiwiZXhwIjoxNjI5ODE0MTQyLCJpYXQiOjE2Mjk3OTYxNDJ9.46k1AZku1MOZxYj2I8P0oVhsdg0yNI7omHFeP4WoDogxPSX51O9DJ4l83itfe1CWh8Wouco854cy_QGXrn5fWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookName\": \"Clean Code\",\n    \"customerName\": \"unclebob@hotmail.com\",\n    \"count\": 1\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Orders In Page",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYW5jaW5hckBvdXRsb29rLmNvbSIsImV4cCI6MTYyOTgyMjAwNSwiaWF0IjoxNjI5ODA0MDA1fQ.g_yOlL-KHQqZE_9OehSkdfLs_jHwt3TsmMnlRLxQsdBVmYIerizsWoHaANj7Y6fEliFGw3lJXEowIdENqdQ1eQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/orders?customerEmail=unclebob@gmail.com&page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "customerEmail",
+									"value": "unclebob@gmail.com"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Add New Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/stream+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Uncle\",\n    \"surname\": \"Bob\",\n    \"email\": \"unclebob@hotmail.com\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Add New Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"clean code\",\n    \"stock\": 20,\n    \"price\": \"17.75\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYW5jaW5hckBvdXRsb29rLmNvbSIsImV4cCI6MTYyOTgyMjAwNSwiaWF0IjoxNjI5ODA0MDA1fQ.g_yOlL-KHQqZE_9OehSkdfLs_jHwt3TsmMnlRLxQsdBVmYIerizsWoHaANj7Y6fEliFGw3lJXEowIdENqdQ1eQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"clean code\",\n    \"stock\": 48\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Statistics",
+			"item": [
+				{
+					"name": "Total Order Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYW5jaW5hckBvdXRsb29rLmNvbSIsImV4cCI6MTYyOTgyMjAwNSwiaWF0IjoxNjI5ODA0MDA1fQ.g_yOlL-KHQqZE_9OehSkdfLs_jHwt3TsmMnlRLxQsdBVmYIerizsWoHaANj7Y6fEliFGw3lJXEowIdENqdQ1eQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/statistics/total-order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"statistics",
+								"total-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Order Price",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYW5jaW5hckBvdXRsb29rLmNvbSIsImV4cCI6MTYyOTgyMjAwNSwiaWF0IjoxNjI5ODA0MDA1fQ.g_yOlL-KHQqZE_9OehSkdfLs_jHwt3TsmMnlRLxQsdBVmYIerizsWoHaANj7Y6fEliFGw3lJXEowIdENqdQ1eQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/statistics/total-amount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"statistics",
+								"total-amount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Details Per Month",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYW5jaW5hckBvdXRsb29rLmNvbSIsImV4cCI6MTYyOTgyMjAwNSwiaWF0IjoxNjI5ODA0MDA1fQ.g_yOlL-KHQqZE_9OehSkdfLs_jHwt3TsmMnlRLxQsdBVmYIerizsWoHaANj7Y6fEliFGw3lJXEowIdENqdQ1eQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/statistics/order-details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"statistics",
+								"order-details"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

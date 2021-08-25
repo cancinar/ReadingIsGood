@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      auto-index-creation: true
+      uri: mongodb://riguser:rigpassword@mongo_db:27017/rigdb
+
+jwt:
+  secret: secret

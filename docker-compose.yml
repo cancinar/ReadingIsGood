@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  rig:
+    container_name: ReadingIdGoodApplication
+    image: rig-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo_db
+    command: bash -c "/usr/wait-for-it.sh --timeout=5 mongo_db:27017 && java -jar app.jar"
+  mongo_db:
+    image: mongo:latest
+    container_name: MongoDB
+    restart: always
+    environment:
+       MONGO_INITDB_ROOT_USERNAME: riguser
+       MONGO_INITDB_ROOT_PASSWORD: rigpassword
+       MONGO_INITDB_DATABASE: rigdb
+    ports:
+    - '27017:27017'
